@@ -24,44 +24,49 @@
 
 <body>
 
-  <h2>🔥 Firebase DP Test</h2>
-  <h3>🔥 Firebase DP Test</h3>
+   font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding-top: 50px;
+        }
 
-  <div class="card">
-    <h3 id="name">Loading...</h3>
-    <img id="image" />
-  </div>
+        .box {
+            background: white;
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 
-  // 🔴 IMPORTANT: yahan apna Firebase config paste karna hoga
-const firebaseConfig = {
-  apiKey: "AIzaSyCzdxRXm0UuoOZvhsr3K-f6zh7FWdMZDiw",
-  authDomain: "funny-dp-test.firebaseapp.com",
-  projectId: "funny-dp-test",
-  storageBucket: "funny-dp-test.firebasestorage.app",
-  messagingSenderId: "929166361346",
-  appId: "1:929166361346:web:d6693d9719c659d45a781b",
-  measurementId: "G-SGGPRBV9DX"
-};
+<body>
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+    <div class="box">
+        <h1>خوش آمدید</h1>
+        <p>یہ ایک سادہ HTML ٹیسٹ ویب سائٹ ہے۔</p>
 
-  async function loadData() {
-    const docRef = doc(db, "test", "3tJRY2Llv2b8H7rIIZEu");
-    const docSnap = await getDoc(docRef);
+        <button onclick="showMessage()">
+            یہاں کلک کریں
+        </button>
 
-    if (docSnap.exists()) {
-      document.getElementById("name").innerText = docSnap.data().name;
-      document.getElementById("image").src = docSnap.data().image;
-    }
-  }
+        <p id="result"></p>
+    </div>
 
-  loadData();
-</script>
+    <script>
+        function showMessage() {
+            document.getElementById("result").innerHTML =
+                "مبارک ہو! JavaScript کام کر رہی ہے۔";
+        }
+    </script>
+
 
 </body>
 </html>
