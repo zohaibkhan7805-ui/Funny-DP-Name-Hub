@@ -1,53 +1,623 @@
-<!DOCTYPE html>
-<html lang="ur">
-<head>
-    <meta charset="UTF-8">
+<?xml version="1.0" encoding="UTF-8" ?>
+<html b:layoutsVersion='3' lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  
+  <head>
     <title>Funny DP & Name Hub</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-            padding-top: 50px;
-        }
+    <!-- Meta Tags -->
+     <meta charset='UTF-8'/>
+     <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1' name='viewport'/>
+     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'/>
 
-        .box {
-            background: white;
-            width: 400px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px gray;
-        }
+    
+    <!-- Css For Web Page -->
+   <b:skin><![CDATA[
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.webcover {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 2px solid red; /* sirf border aayega */
+  background: #defaf9; /* andar safed rakho */
+}
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
-</head>
+.webcover .slider img {
+  width: 800px;
+  height: 362px;
+  display: block;
+  margin: 0 auto; /* beech me center */
+}
 
-<body>
+.webcover .products {
+  display: flex;
+  justify-content: center; /* products ek line me center */
+  gap: 10px;
+}
 
-    <div class="box">
-        <h1>خوش آمدید</h1>
-        <p>یہ ایک سادہ HTML ٹیسٹ ویب سائٹ ہے۔</p>
+.webcover .productbox {
+  width: 180px;
+  height: 200px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
 
-        <button onclick="showMessage()">
-            یہاں کلک کریں
-        </button>
+.catagori-slider {
+  width: auto;   /* chaurai (width) */
+  height: auto;  /* lambai (height) */
+   margin: 0 auto; /* center me lane ke liye */
+  overflow: hidden; /* andar ka content bahar na nikle */
+}
 
-        <p id="result"></p>
+.productbox {
+  width: 100%;
+  max-width: 1200px;   /* same value */
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Mobile view fix */
+@media (max-width: 768px) {
+  .productbox {
+    padding: 5px;
+  }
+}
+
+
+.class1 h1{
+  color: grey; 
+  border: 1px solid black; 
+  margin: 12px; 
+  background: red;
+}
+.computer-slider { display:block; }   /* by default dikhayega */
+
+@media (max-width:768px){
+  .computer-slider { display:none; }  /* mobile par hide ho jayega */
+}
+
+
+/* Slider CSS */
+
+.layout-wrap {
+  display: flex;  /* andar ke elements (Left, Slider, Right) ko ek line (row) me laata hai. */           
+  gap: 20px;     /* columns ke darmiyan 20px ki khali space deta hai. */
+  align-items: flex-start;   /* teeno columns ki height agar alag ho to unka top ek line me aa jata hai (sab upar se align ho jate hain) */
+  justify-content: center;   /* poora section horizontally center ho jata hai. */
+  margin: 20px auto;    /* upar aur neeche 20px ka space deta hai, left-right auto ka matlab hai block ko page ke center me laana */
+  max-width: 1200px;   /* iska matlab hai layout ki total chaurai zyada se zyada 1200px hogi (product grid ke barabar). */
+}
+
+.slider {
+  width: 100%;
+  max-width: 800px;   /* tumhari image size ke barabar */
+  height: 362px;
+  margin: 0 auto;     /* beech me */
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+
+.slides img {
+  width: 800px;   /* fix image size */
+  height: 362px;
+  object-fit: contain;   /* pura fit hoga, crop nahi hoga */
+  background: #000;      /* chhoti image ho to black background fill */
+  flex-shrink: 0;
+}
+
+.slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  animation: slideAnim 12s infinite; /* auto slide */
+}
+
+/* Animation ke liye */
+@keyframes slideAnim {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(0); }
+  25%  { transform: translateX(-800px); }
+  45%  { transform: translateX(-800px); }
+  50%  { transform: translateX(-1600px); }
+  70%  { transform: translateX(-1600px); }
+  75%  { transform: translateX(-2400px); }
+  95%  { transform: translateX(-2400px); }
+  100% { transform: translateX(0); }
+}
+
+
+.second-menu .marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #f0a70a;
+  border-top: 2px solid #c5e31b;
+  border-bottom: 2px solid #c5e31b;
+  height: 38px;
+  position: relative;
+}
+
+.second-menu .marquee-inner {
+  display: flex;
+  width: max-content;
+  animation: scrollMarquee 25s linear infinite;
+}
+
+.second-menu .marquee_content {
+  display: flex;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.second-menu .marquee_content li {
+  list-style: none;
+}
+
+.second-menu .marquee_content li a {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #e31be3;
+  font-weight: 400;
+  line-height: 38px;
+  text-decoration: none;
+  letter-spacing: 0.8px;
+}
+
+.second-menu .marquee_content li a:before {
+  content: '';
+  background-color: #111;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 25px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+/* continuous scroll animation */
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* hover par rukne ke liye */
+.second-menu .marquee-inner:hover {
+  animation-play-state: paused;
+}
+
+
+/* Grid layout */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  background: #bcd2f7;
+}
+
+:root {
+  --card-radius: 12px;
+  --card-bg: #ffffff;
+  --card-border: #e6e6e6;
+  --accent: #6b46c1;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 15px;
+  flex-grow: 15;
+}
+
+.card-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #222;
+}
+
+.card-text {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.card-btn {
+  display: inline-block;
+  padding:8px 4px;
+  text-decoration: none;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Deferint Device Control */
+
+/* Desktop Default (no media query) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Desktop par 5 products ek line me */
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr); /* Tablet par 3 products */
+  }
+
+  .webcover {
+    grid-template-columns: 200px 1fr; /* Sirf left + slider */
+  }
+  .webcover .categories:last-child {
+    display: none; /* Right side hide */
+  }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* Mobile par 2 products */
+  }
+
+  .webcover {
+    grid-template-columns: 1fr; /* Mobile pe sirf slider */
+  }
+  .webcover .categories {
+    display: none; /* Dono side categories hide */
+  }
+}
+
+
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-logo img {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.footer-logo p, 
+.footer-logo a {
+  color: #bbb;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.footer-links h3,
+.footer-social h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin: 6px 0;
+}
+
+.footer-links ul li a {
+  color: #bbb;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #00c3ff;
+}
+
+.footer-social .social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 20px;
+  color: #bbb;
+  transition: 0.3s;
+}
+
+.footer-social .social-icons a:hover {
+  color: #00c3ff;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  margin-top: 20px;
+  padding-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+]]></b:skin>
+      
+    <!-- Css For Layout Section -->
+      <b:template-skin><![CDATA[
+       ]]></b:template-skin>
+    
+     <!-- JavaScript -->
+    
+      <!-- slider ke nichy line -->
+    
+    <script>
+document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+  // clone hata diya &#8212; ab text double nahi hoga
+});
+</script>
+
+    
+    </head>
+  
+  <body>
+    
+      <b:section id='ahhdsj'/>
+   
+    
+  <div class='class1'>
+    <h1>ChearBusiness</h1>
+  </div>
+       <div class='webcover'>
+         <div class='catagori-slider'>
+        <div class='computer-slider'>
+<div class='layout-wrap'>
+
+  <!-- Left Categories -->
+  <div class='top-categories'>
+    
+    <h3 class='title'>Left Collections</h3>
+    <ul>
+      <li><a href='#'><i class='fa fa-heartbeat'/> Health Care</a></li>
+      <li><a href='#'><i class='fa fa-camera'/> Camera</a></li>
+      <li><a href='#'><i class='fa fa-book'/> Books</a></li>
+      <li><a href='#'><i class='fa fa-heartbeat'/> Watches</a></li>
+      <li><a href='#'><i class='fa fa-camera'/> Sunglasses</a></li>
+      <li><a href='#'><i class='fa fa-book'/>Sportswear</a></li>
+      <li><a href='#'><i class='fa fa-heartbeat'/> Health Care</a></li>
+      <li><a href='#'><i class='fa fa-camera'/> Camera</a></li>
+      <li><a href='#'><i class='fa fa-book'/> Books</a></li>
+      <li><a href='#'><i class='fa fa-heartbeat'/> Watches</a></li>
+      <li><a href='#'><i class='fa fa-camera'/> Sunglasses</a></li>
+      <li><a href='#'><i class='fa fa-book'/>Sportswear</a></li>
+      <li><a href='#'><i class='fa fa-book'/> Books</a></li>
+      <li><a href='#'><i class='fa fa-heartbeat'/> Watches</a></li>
+      <li><a href='#'><i class='fa fa-camera'/> Sunglasses</a></li>
+      <li><a href='#'><i class='fa fa-book'/>Sportswear</a></li>
+    
+    </ul>
+  </div>
+
+  <!-- Slider -->
+  <br>
+  <div class='slider'>
+    <div class='slides'>
+      <img alt='Slide 1' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaA4uGd32pP2C2JYeEm51iyVtn5AXkOSCaJCOLBNJHlUk3dvWoz_H_BQD5beEoocQQTyhKTBR8ozmtO2YincMt9yTcY_cQUIJxwNeqQLKBUSQXJMr1fWb5STN0Iwg4yylaZHtj2FA5HcWQrNRaAgyWRSHJlpUOH5PDhIBltAmmhMREXEs7IExbj9qVONM/s800/slider%203.jpg'/>
+       <img alt='Slide 3' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6uj1y7iJZBd4fs3ep1Az99EhxIzAcwhZhf-LmURPIycVi_M89hMZA62PrWqXJCC0_DgGh-pBWKef04eAaxzlcnLO4NXE4FReVT7nWVXxBM-5Jxghk1KTzPjtzaHs6Jh-AciW2qx5wn_eZ_cBnPqgViMNZlU970u2d7LEpfOCnaqxy4MQhOi35BrgzpF0/s800/slider%201.jpg'/>
+      <img alt='Slide 3' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF6w3z3ag0u7gkF8tZdAt9T8W_0BYnbNXblLo-zhJzb9oTv9aOUuBUpgXmx6NO8EtrdWiahQaogML1kT8cHXw0kgvuODIwBqYGhr4Svin2OAOjcqFYTxqjI94mYGTSMNN4JMGhfVtn-rpe2vgRcpu4Bkr-0hAh35g6BEjRsA9EwSNjG23K0s2DrAKnpiQ/s800/slider%202.jpg'/>
+      <img alt='Slide 3' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiF6w3z3ag0u7gkF8tZdAt9T8W_0BYnbNXblLo-zhJzb9oTv9aOUuBUpgXmx6NO8EtrdWiahQaogML1kT8cHXw0kgvuODIwBqYGhr4Svin2OAOjcqFYTxqjI94mYGTSMNN4JMGhfVtn-rpe2vgRcpu4Bkr-0hAh35g6BEjRsA9EwSNjG23K0s2DrAKnpiQ/s800/slider%202.jpg'/>
+
+      
+    </div>
+  </div>
+    </br>
+
+  <!-- Right Categories -->
+  <div class='top-categories'>
+    <h3 class='title'>Right Collections</h3>
+    <ul>
+      <li><a href='#'><i class='fa fa-heartbeat'/> Health Care</a></li>
+      <li><a href='#'><i class='fa fa-camera'/> Camera</a></li>
+      <li><a href='#'><i class='fa fa-book'/> Books</a></li>
+      <li><a href='#'><i class='fa fa-heartbeat'/> Watches</a></li>
+      <li><a href='#'><i class='fa fa-camera'/> Sunglasses</a></li>
+      <li><a href='#'><i class='fa fa-book'/>Sportswear</a></li>
+      <li><a href='#'><i class='fa fa-heartbeat'/> Health Care</a></li>
+      <li><a href='#'><i class='fa fa-camera'/> Camera</a></li>
+      <li><a href='#'><i class='fa fa-book'/> Books</a></li>
+      <li><a href='#'><i class='fa fa-heartbeat'/> Watches</a></li>
+      <li><a href='#'><i class='fa fa-camera'/> Sunglasses</a></li>
+      <li><a href='#'><i class='fa fa-book'/>Sportswear</a></li>
+      <li><a href='#'><i class='fa fa-book'/> Books</a></li>
+      <li><a href='#'><i class='fa fa-heartbeat'/> Watches</a></li>
+      <li><a href='#'><i class='fa fa-camera'/> Sunglasses</a></li>
+    </ul>
+  </div>
+
+</div>
+     </div> 
+         </div> 
+              </div>
+         
+           
+           <!-- slider ke nichy line -->
+<div class='second-menu'>
+  <div class='marquee'>
+    <div class='marquee-inner'>
+      <ul class='marquee_content'>
+        <li><a href='#'>First Time Free Delivery in India</a></li>
+        <li><a href='#'>Summer Look Flash Sale 70% Off</a></li>
+        <li><a href='#'>20% Off Everything For Women</a></li>
+        <li><a href='#'>First Time Free International Delivery</a></li>
+        <li><a href='#'>Winter Collection Flash Sale 30% Off</a></li>
+        <li><a href='#'>100% Designer Collection</a></li>
+      </ul>
+      <!-- duplicate list for seamless scrolling -->
+      <ul class='marquee_content'>
+        <li><a href='#'>First Time Free Delivery in India</a></li>
+        <li><a href='#'>Summer Look Flash Sale 70% Off</a></li>
+        <li><a href='#'>20% Off Everything For Women</a></li>
+        <li><a href='#'>First Time Free International Delivery</a></li>
+        <li><a href='#'>Winter Collection Flash Sale 30% Off</a></li>
+        <li><a href='#'>100% Designer Collection</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- product-grid -->
+    
+    <div class='productbox'>
+<div class='product-grid'>
+  
+  <div class='card'>
+    <div class='card-body'>
+      <img alt='Product' class='card-img' src='https://darazsale.pk/wp-content/uploads/2025/05/Disaar-Papaya-Whitening-In-Pakistan.png'/>
+      <h3 class='card-title'>Box Title</h3>
+      <p class='card-text'>Short description goes here. Keep it concise and SEO-friendly.</p>
+      <a class='card-btn' href='#'>Learn More</a>
+    </div>
+  </div>
+
+  <div class='card'>
+    <div class='card-body'>
+      <img alt='Product' class='card-img' src='https://darazsale.pk/wp-content/uploads/2025/05/Disaar-Papaya-Whitening-In-Pakistan.png'/>
+      <h3 class='card-title'>Box Title</h3>
+      <p class='card-text'>Short description goes here. Keep it concise and SEO-friendly.</p>
+      <a class='card-btn' href='#'>Learn More</a>
+    </div>
+  </div>
+
+  <div class='card'>
+    <div class='card-body'>
+      <img alt='Product' class='card-img' src='https://darazsale.pk/wp-content/uploads/2025/05/Disaar-Papaya-Whitening-In-Pakistan.png'/>
+      <h3 class='card-title'>Box Title</h3>
+      <p class='card-text'>Short description goes here. Keep it concise and SEO-friendly.</p>
+      <a class='card-btn' href='#'>Learn More</a>
+    </div>
+  </div>
+
+   <div class='card'>
+    <div class='card-body'>
+      <img alt='Product' class='card-img' src='https://darazsale.pk/wp-content/uploads/2025/05/Disaar-Papaya-Whitening-In-Pakistan.png'/>
+      <h3 class='card-title'>Box Title</h3>
+      <p class='card-text'>Short description goes here. Keep it concise and SEO-friendly.</p>
+      <a class='card-btn' href='#'>Learn More</a>
+    </div>
+  </div>
+
+  <div class='card'>
+    <div class='card-body'>
+      <img alt='Product' class='card-img' src='https://darazsale.pk/wp-content/uploads/2025/05/Disaar-Papaya-Whitening-In-Pakistan.png'/>
+      <h3 class='card-title'>Box Title</h3>
+      <p class='card-text'>Short description goes here. Keep it concise and SEO-friendly.</p>
+      <a class='card-btn' href='#'>Learn More</a>
+    </div>
+  </div>
+
+  <div class='card'>
+    <div class='card-body'>
+      <img alt='Product' class='card-img' src='https://darazsale.pk/wp-content/uploads/2025/05/Disaar-Papaya-Whitening-In-Pakistan.png'/>
+      <h3 class='card-title'>Box Title</h3>
+      <p class='card-text'>Short description goes here. Keep it concise and SEO-friendly.</p>
+      <a class='card-btn' href='#'>Learn More</a>
+    </div>
+  </div>
+  
+</div><!-- end product-grid -->
+
+    
+ <!-- ====== Footer Start ====== -->
+<footer class='footer'>
+  <div class='footer-container'>
+
+    <!-- Logo + Info -->
+    <div class='footer-logo'>
+     <img alt='Chear Business Logo' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHpG6LmylIkeIhFhaz6HoUJsYhMM2K7Aufb2x0_4s4Ej3ve9SoVa4BudP79GEZhR3f8Jj9-sq3zaXQO8Im8cd9ZWzAA2UtzRQEseKP8Asc5bf7V-l_KleKVok2cbtg2aUimOEELxHLNMgFbfb2vtTb-LzKsNbwbDNamOMB-rKZmatiJ1CCGqlM-NRklmQ/s348/PL.png'/>
+      <p>Email: <a href='mailto:chearbusiness@gmail.com'>chearbusiness@gmail.com</a></p>
+      <p>Phone: <a href='tel:03286848461'>03286848461</a></p>
     </div>
 
-    <script>
-        function showMessage() {
-            document.getElementById("result").innerHTML =
-                "مبارک ہو! JavaScript کام کر رہی ہے۔";
-        }
-    </script>
+    <!-- Quick Links -->
+    <div class='footer-links'>
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href='#'>Home</a></li>
+        <li><a href='#'>Products</a></li>
+        <li><a href='#'>Services</a></li>
+        <li><a href='#'>Contact</a></li>
+      </ul>
+    </div>
 
-</body>
+    <!-- About -->
+    <div class='footer-links'>
+      <h3>About</h3>
+      <ul>
+        <li><a href='#'>Our Story</a></li>
+        <li><a href='#'>Privacy Policy</a></li>
+        <li><a href='#'>Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class='footer-social'>
+      <h3>Follow Us</h3>
+      <div class='social-icons'>
+        <a href='#'><i class='fa fa-facebook'/></a>
+        <a href='#'><i class='fa fa-instagram'/></a>
+        <a href='#'><i class='fa fa-twitter'/></a>
+        <a href='#'><i class='fa fa-linkedin'/></a>
+        <a href='#'><i class='fa fa-youtube'/></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class='footer-bottom'>
+    <p>&#169; 2025 Chear Business. All Rights Reserved.</p>
+  </div>
+</footer>
+<!-- ====== Footer End ====== -->
+
+    </div>
+  </body>
 </html>
